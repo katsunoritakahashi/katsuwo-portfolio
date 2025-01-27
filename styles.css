@@ -110,6 +110,10 @@ body {
         display: none;
     }
     
+    .hero {
+        height: 200px;
+    }
+    
     .hero h1 {
         font-size: 2rem;
     }
