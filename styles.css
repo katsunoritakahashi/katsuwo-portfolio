@@ -50,7 +50,7 @@ body {
 }
 
 .services {
-    padding: 4rem 2rem;
+    padding: 1rem 2rem;
 }
 
 .service-cards {
@@ -117,4 +117,42 @@ body {
     .hero h1 {
         font-size: 2rem;
     }
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+    color: #444444;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: #FF8C00;
+}
+
+.company-intro {
+    max-width: 1200px;
+    margin: 4rem auto 1rem;
+    padding: 0 2rem;
+    text-align: center;
+    line-height: 2;
+}
+
+.company-intro p {
+    margin-bottom: 1rem;
+}
+
+.company-intro p:last-child {
+    margin-bottom: 0;
 } 
