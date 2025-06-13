@@ -1,154 +1,278 @@
-body {
-    font-family: helvetica, arial, sans-serif;
-    margin: 14px 14px;
-    font-size: 14px;
-}
-h1 {
-    border-bottom: 2px solid #eee;
-}
-ul {
-    padding-left: 30px;
-}
-ol {
-    padding-left: 20px;
-}
-.margin {
-    margin-left: 3px;
-}
-.style-none {
-    text-indent: -1.5em;
-}
-.style-none > li {
-    list-style-type:none;
-    list-style-position:inside;
-    counter-increment: cnt;
-}
-.style-none > li:before {
-    display: marker;
-    content: "(" counter(cnt) ")";
-}
-#terms > ol > li > p.bold {
-    font-weight: bold;
-}
-#terms {
-    margin: 14px;
-}
-#terms > ol {
-    padding: 0;
-}
-#terms > ul > li {
-    font-weight: bold;
-}
-#terms > ul > li > p {
-    font-weight: 400;
-}
-/*#terms > ol > li {*/
-/*    font-weight: bold;*/
-/*    list-style-type: none;*/
-/*}*/
-#terms > ol > li > ul {
-    margin-top: 10px;
-}
-#terms > ol > li > ol {
-}
-#terms > ol > li > p {
-    font-weight: 400;
-}
-#terms > ul > li > ol > li {
-    font-weight: 400;
-}
-#terms > ol > li > ol > li {
-    font-weight: 400;
-}
-#terms > ol > li > ol > li > ol {
-    text-indent: -1em;
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #7f8c8d;
+    --background-color: #ffffff;
+    --accent-color: #3498db;
+    --border-color: #ecf0f1;
+    --section-bg: #f8f9fa;
+    --text-light: #95a5a6;
 }
 
-#terms > ol > li > ul > li {
-    font-weight: 400;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", "Yu Gothic", sans-serif;
+    line-height: 1.8;
+    color: var(--primary-color);
+    background-color: var(--background-color);
+    font-size: 16px;
+    letter-spacing: 0.02em;
+}
+
+.wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* ヘッダースタイル */
+h1 {
+    font-size: 2.25rem;
+    text-align: center;
+    padding: 0 0 3rem 0;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    color: var(--primary-color);
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background-color: var(--accent-color);
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin: 2.5rem 0 1rem 0;
+    font-weight: 500;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+/* パラグラフスタイル */
+p {
+    margin-bottom: 1.25rem;
+    color: var(--primary-color);
+    word-wrap: break-word;
+}
+
+.bold {
+    font-weight: 500;
+    color: var(--primary-color);
+    background-color: var(--section-bg);
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin: 2rem 0;
+    border-left: 3px solid var(--accent-color);
+}
+
+/* リストスタイル */
+ol, ul {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+ol li {
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    line-height: 1.8;
+}
+
+ul li {
+    margin-bottom: 0.75rem;
     list-style-type: disc;
+    line-height: 1.7;
 }
-#policy {
-    margin: 5px;
+
+/* ネストされたリスト */
+ol ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
 }
-#policy > ol {
+
+ol ol li {
+    margin-bottom: 0.75rem;
+    font-weight: normal;
+}
+
+/* メイン条項のスタイル */
+#terms > ol {
+    counter-reset: main-counter;
+    list-style: none;
     padding: 0;
 }
-#policy > ul > li {
-    font-weight: bold;
+
+#terms > ol > li {
+    counter-increment: main-counter;
+    margin: 3rem 0;
+    padding: 2rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    list-style: none;
+    position: relative;
+    transition: box-shadow 0.2s ease;
 }
-#policy > ul > li > p {
-    font-weight: 400;
+
+#terms > ol > li:hover {
+    box-shadow: 0 2px 12px rgba(52, 152, 219, 0.08);
 }
-#policy > ol > li {
-    padding: 5px 0;
-    font-weight: bold;
-    /*list-style-type: none;*/
+
+#terms > ol > li::before {
+    content: counter(main-counter);
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background-color: var(--accent-color);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 500;
 }
-#policy > ol > li > ul {
-}
-#policy > ol > li > p {
-    font-weight: 400;
-}
-#policy > ol > li > p.bold {
-    font-weight: bold;
-}
-#policy > ul > li > ol > li {
-    font-weight: 400;
-}
-#policy > ol > li > ol > li {
-    font-weight: 400;
-}
-#policy > ol > li > ul > li {
-    font-weight: 400;
-    list-style-type: disc;
-}
-#help > ul> li.toggle > p {
-    display: none;
-}
-#help > ul {
+
+/* サブ条項のスタイル */
+#terms > ol > li > ol {
+    counter-reset: sub-counter;
+    margin: 1.5rem 0 0 0;
     padding: 0;
+    list-style: none;
+}
+
+#terms > ol > li > ol > li {
+    counter-increment: sub-counter;
+    margin: 1rem 0;
+    padding: 1.25rem;
+    background-color: var(--section-bg);
+    border-radius: 4px;
+    border: none;
+    list-style: none;
+    position: relative;
+}
+
+#terms > ol > li > ol > li::before {
+    content: "(" counter(sub-counter) ")";
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+}
+
+/* 連絡先情報のスタイル */
+.contact-info {
+    background-color: var(--section-bg);
+    padding: 1.5rem;
+    border-radius: 6px;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border-color);
+}
+
+.contact-info p {
+    font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+    font-size: 1rem;
+    color: var(--primary-color);
     margin: 0;
 }
-#help > .label {
-    background-color: #04C97D;
-    color: #fff;
-    padding: 12px;
-    font-weight: bold;
-    margin:0px;
+
+/* フッターセクション */
+.footer-section {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
 }
-#help > ul > li:before {
-    content: '▼';
-    float: right;
-    color: #04C97D;
-    margin-right:12px;
-}
-#help > ul > li {
-    list-style-type: none;
-    border: 1px solid #eee;
-    padding:12px;
-}
-#help > ul > li:after {
-    clear: both;
-}
-#tokushoho {
-    margin: 14px;
-}
-#tokushoho ol {
-    padding: 0;
-}
-#tokushoho ul {
-    padding: 0;
-    margin-bottom: 14px;
-}
-#tokushoho li {
-    list-style-type: none;
-}
-#tokushoho > ol > li > p {
+
+.footer-section p {
     font-weight: 400;
-    margin-top: 5px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin: 0;
 }
-#tokushoho > ol > li > p.bold {
-    font-weight: bold;
-    margin-bottom: 5px;
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 2rem 1.5rem;
+    }
+    
+    body {
+        font-size: 15px;
+    }
+    
+    h1 {
+        font-size: 1.875rem;
+        padding-bottom: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.125rem;
+    }
+    
+    #terms > ol > li {
+        padding: 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    #terms > ol > li::before {
+        top: -10px;
+        left: 15px;
+        width: 20px;
+        height: 20px;
+        font-size: 0.75rem;
+    }
+}
+
+/* 選択時のスタイル */
+::selection {
+    background: rgba(52, 152, 219, 0.2);
+    color: var(--primary-color);
+}
+
+::-moz-selection {
+    background: rgba(52, 152, 219, 0.2);
+    color: var(--primary-color);
+}
+
+/* プリント時のスタイル */
+@media print {
+    body {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+    
+    #terms > ol > li {
+        background-color: transparent;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+        box-shadow: none;
+    }
+    
+    h1, h3 {
+        break-after: avoid;
+    }
+    
+    .footer-section {
+        page-break-before: always;
+    }
 }
